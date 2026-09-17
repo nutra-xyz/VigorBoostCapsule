@@ -2,6 +2,7 @@ const fs = require("fs");
 const { minify: minifyHTML } = require("html-minifier-terser");
 const { minify: minifyJS } = require("terser");
 const CleanCSS = require("clean-css");
+
 async function build() {
   const html = fs.readFileSync("index.html", "utf8");
   const css = fs.readFileSync("style.css", "utf8");
@@ -27,9 +28,12 @@ async function build() {
     }
   });
 
-  fs.writeFileSync("index.html", minHTML);
-  fs.writeFileSync("style.css", minCSS);
-  fs.writeFileSync("script.js", minJS.code);
+  fs.rmSync("public", { recursive: true, force: true });
+  fs.mkdirSync("public");
+
+  fs.writeFileSync("public/index.html", minHTML);
+  fs.writeFileSync("public/style.css", minCSS);
+  fs.writeFileSync("public/script.js", minJS.code);
 
   console.log("Vigor Boost production build completed.");
 }
