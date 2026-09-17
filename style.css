@@ -1,0 +1,1185 @@
+/* =========================================
+   VIGOR BOOST
+   Premium Men's Wellness Landing Page
+========================================= */
+
+:root {
+  --navy: #0b1020;
+  --navy-light: #151b2e;
+  --navy-soft: #202943;
+  --gold: #c9a24d;
+  --gold-light: #e8c96b;
+  --white: #ffffff;
+  --off-white: #f5f7fa;
+  --text: #172033;
+  --muted: #667085;
+  --border: rgba(11, 16, 32, 0.1);
+  --shadow: 0 25px 70px rgba(11, 16, 32, 0.12);
+  --radius: 24px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+.container {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.section {
+  padding: 110px 0;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(11, 16, 32, 0.88);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav {
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.logo {
+  font-family: "Manrope", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+  color: white;
+}
+
+.logo span {
+  color: var(--gold-light);
+  margin-left: 3px;
+}
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-left: auto;
+}
+
+.desktop-nav a {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.25s ease;
+}
+
+.desktop-nav a:hover {
+  color: var(--gold-light);
+}
+
+.nav-button {
+  padding: 12px 20px;
+  border: 1px solid rgba(232, 201, 107, 0.6);
+  border-radius: 999px;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: 0.25s ease;
+}
+
+.nav-button:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.menu-button {
+  display: none;
+  background: transparent;
+  border: 0;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+  min-height: 850px;
+  padding-top: 150px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 80% 45%, rgba(201, 162, 77, 0.15), transparent 30%),
+    radial-gradient(circle at 20% 20%, rgba(57, 76, 135, 0.25), transparent 35%),
+    var(--navy);
+}
+
+.hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.glow-one {
+  width: 300px;
+  height: 300px;
+  background: rgba(201, 162, 77, 0.1);
+  right: 15%;
+  top: 25%;
+}
+
+.glow-two {
+  width: 260px;
+  height: 260px;
+  background: rgba(70, 100, 190, 0.12);
+  left: 0;
+  bottom: 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  align-items: center;
+  gap: 50px;
+}
+
+.eyebrow,
+.section-label {
+  color: var(--gold-light);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  max-width: 700px;
+  color: white;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(48px, 6vw, 76px);
+  line-height: 1.02;
+  letter-spacing: -3px;
+  font-weight: 800;
+}
+
+.hero h1 span {
+  display: block;
+  color: var(--gold-light);
+}
+
+.hero-text {
+  max-width: 590px;
+  margin-top: 28px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.hero-buttons {
+  margin-top: 35px;
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 17px 26px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  box-shadow: 0 15px 35px rgba(201, 162, 77, 0.2);
+  transition: 0.3s ease;
+}
+
+.primary-button span {
+  font-size: 20px;
+  line-height: 0;
+}
+
+.primary-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 45px rgba(201, 162, 77, 0.3);
+}
+
+.trust-line {
+  display: flex;
+  gap: 17px;
+  margin-top: 22px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+}
+
+.trust-line span {
+  color: var(--gold-light);
+}
+
+.hero-product {
+  min-height: 570px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-orbit {
+  position: absolute;
+  width: 470px;
+  height: 470px;
+  border: 1px solid rgba(232, 201, 107, 0.2);
+  border-radius: 50%;
+}
+
+.product-orbit::before {
+  content: "";
+  position: absolute;
+  inset: 35px;
+  border: 1px solid rgba(232, 201, 107, 0.12);
+  border-radius: 50%;
+}
+
+.product-image {
+  position: relative;
+  z-index: 2;
+  width: min(500px, 90%);
+  filter: drop-shadow(0 35px 45px rgba(0, 0, 0, 0.4));
+  animation: floatProduct 5s ease-in-out infinite;
+}
+
+.product-badge {
+  position: absolute;
+  right: 0;
+  top: 15%;
+  z-index: 3;
+  padding: 10px 15px;
+  border: 1px solid rgba(232, 201, 107, 0.35);
+  border-radius: 999px;
+  color: var(--gold-light);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+}
+
+@keyframes floatProduct {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+/* =========================================
+   INTRO
+========================================= */
+
+.product-intro {
+  background: var(--off-white);
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1fr;
+  align-items: center;
+  gap: 100px;
+}
+
+.image-card {
+  min-height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  background:
+    radial-gradient(circle, rgba(201, 162, 77, 0.13), transparent 45%),
+    white;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.image-card img {
+  width: 90%;
+  filter: drop-shadow(0 25px 30px rgba(0, 0, 0, 0.15));
+}
+
+.section-heading {
+  max-width: 750px;
+  margin-bottom: 55px;
+}
+
+.section-heading h2,
+.intro-content h2,
+.why-content h2,
+.faq-heading h2,
+.final-content h2 {
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(38px, 5vw, 58px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+  font-weight: 800;
+}
+
+.section-heading h2 span,
+.intro-content h2 span,
+.why-content h2 span,
+.faq-heading h2 span,
+.final-content h2 span {
+  color: var(--gold);
+}
+
+.section-heading p,
+.intro-content p,
+.why-content > p,
+.faq-heading > p {
+  margin-top: 20px;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.intro-content p + p {
+  margin-top: 14px;
+}
+
+.outline-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 15px 22px;
+  border: 1px solid var(--navy);
+  border-radius: 999px;
+  color: var(--navy);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  transition: 0.25s ease;
+}
+
+.outline-button:hover {
+  background: var(--navy);
+  color: white;
+}
+
+/* =========================================
+   BENEFITS
+========================================= */
+
+.benefits {
+  background: white;
+}
+
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.benefit-card {
+  position: relative;
+  min-height: 285px;
+  padding: 30px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: white;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-7px);
+  box-shadow: var(--shadow);
+}
+
+.card-number {
+  position: absolute;
+  right: 22px;
+  top: 20px;
+  color: rgba(11, 16, 32, 0.08);
+  font-family: "Manrope", sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  color: var(--gold);
+  background: rgba(201, 162, 77, 0.1);
+  font-size: 22px;
+}
+
+.benefit-card h3 {
+  margin-top: 40px;
+  font-family: "Manrope", sans-serif;
+  font-size: 21px;
+}
+
+.benefit-card p {
+  margin-top: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+/* =========================================
+   WHY VIGOR
+========================================= */
+
+.why {
+  background: var(--navy);
+  color: white;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 80px;
+}
+
+.why-content h2 {
+  color: white;
+}
+
+.why-content > p {
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 560px;
+}
+
+.feature-list {
+  margin-top: 38px;
+}
+
+.feature {
+  display: flex;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature > span {
+  color: var(--gold-light);
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+}
+
+.feature strong {
+  font-size: 15px;
+}
+
+.feature p {
+  margin-top: 7px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.why-visual {
+  min-height: 550px;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.why-visual img {
+  width: 80%;
+  position: relative;
+  z-index: 3;
+  filter: drop-shadow(0 35px 40px rgba(0, 0, 0, 0.5));
+}
+
+.visual-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 201, 107, 0.18);
+}
+
+.ring-one {
+  width: 480px;
+  height: 480px;
+}
+
+.ring-two {
+  width: 350px;
+  height: 350px;
+}
+
+/* =========================================
+   FORMULA
+========================================= */
+
+.formula {
+  background: var(--off-white);
+}
+
+.formula-box {
+  min-height: 320px;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  display: grid;
+  place-items: center;
+  background: white;
+  box-shadow: var(--shadow);
+}
+
+.formula-placeholder {
+  text-align: center;
+  max-width: 520px;
+  padding: 40px;
+}
+
+.formula-symbol {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--gold-light);
+  font-size: 30px;
+}
+
+.formula-placeholder h3 {
+  font-family: "Manrope", sans-serif;
+  font-size: 25px;
+}
+
+.formula-placeholder p {
+  margin-top: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* =========================================
+   STEPS
+========================================= */
+
+.steps {
+  background: white;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.step {
+  padding: 35px;
+  border-radius: 24px;
+  background: var(--off-white);
+}
+
+.step-number {
+  color: var(--gold);
+  font-family: "Manrope", sans-serif;
+  font-size: 50px;
+  font-weight: 800;
+}
+
+.step h3 {
+  margin-top: 20px;
+  font-family: "Manrope", sans-serif;
+  font-size: 22px;
+}
+
+.step p {
+  margin-top: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+/* =========================================
+   LIFESTYLE
+========================================= */
+
+.lifestyle {
+  background: white;
+}
+
+.lifestyle-box {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 32px;
+  background:
+    linear-gradient(90deg, rgba(11, 16, 32, 0.95), rgba(11, 16, 32, 0.5)),
+    url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1800&q=85")
+    center/cover;
+}
+
+.lifestyle-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  padding: 70px;
+}
+
+.lifestyle-content h2 {
+  color: white;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(38px, 5vw, 58px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+}
+
+.lifestyle-content h2 span {
+  color: var(--gold-light);
+}
+
+.lifestyle-content p {
+  max-width: 500px;
+  margin: 20px 0 30px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+}
+
+/* =========================================
+   TRUST
+========================================= */
+
+.trust {
+  background: var(--off-white);
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.trust-card {
+  padding: 32px 25px;
+  border-radius: 22px;
+  background: white;
+  border: 1px solid var(--border);
+}
+
+.trust-icon {
+  width: 45px;
+  height: 45px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 25px;
+  border-radius: 13px;
+  background: var(--navy);
+  color: var(--gold-light);
+}
+
+.trust-card h3 {
+  font-family: "Manrope", sans-serif;
+  font-size: 17px;
+}
+
+.trust-card p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   FAQ
+========================================= */
+
+.faq {
+  background: white;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: 90px;
+}
+
+.faq-list {
+  border-top: 1px solid var(--border);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-question {
+  width: 100%;
+  padding: 23px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.faq-question span {
+  font-size: 24px;
+  color: var(--gold);
+  transition: 0.25s ease;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.faq-answer p {
+  padding: 0 30px 23px 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.faq-item.active .faq-question span {
+  transform: rotate(45deg);
+}
+
+/* =========================================
+   FINAL CTA
+========================================= */
+
+.final-cta {
+  background: var(--navy);
+}
+
+.final-box {
+  min-height: 560px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 35px;
+  padding: 70px;
+  background:
+    radial-gradient(circle at 75% 50%, rgba(201, 162, 77, 0.18), transparent 35%),
+    var(--navy-light);
+}
+
+.final-content {
+  position: relative;
+  z-index: 3;
+}
+
+.final-content h2 {
+  color: white;
+}
+
+.final-content p {
+  max-width: 500px;
+  margin: 20px 0 30px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.8;
+}
+
+.final-product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.final-product img {
+  width: 100%;
+  max-width: 480px;
+  filter: drop-shadow(0 35px 45px rgba(0, 0, 0, 0.5));
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+  padding: 70px 0 120px;
+  background: #070b16;
+  color: white;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 60px;
+}
+
+.footer-description {
+  max-width: 320px;
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.footer-links h4 {
+  margin-bottom: 8px;
+  color: var(--gold-light);
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 13px;
+  transition: 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.disclaimer {
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.disclaimer p {
+  max-width: 900px;
+  margin-bottom: 15px;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+/* =========================================
+   MOBILE CTA
+========================================= */
+
+.sticky-cta {
+  display: none;
+}
+
+/* =========================================
+   REVEAL ANIMATION
+========================================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  .nav-button {
+    margin-left: auto;
+  }
+
+  .mobile-menu {
+    padding: 20px;
+    background: var(--navy);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .mobile-menu a {
+    display: block;
+    padding: 15px 0;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .mobile-menu.open {
+    display: block;
+  }
+
+  .hero-grid,
+  .intro-grid,
+  .why-grid,
+  .faq-grid,
+  .final-box {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 140px;
+    padding-bottom: 80px;
+  }
+
+  .hero-product {
+    min-height: 500px;
+  }
+
+  .benefit-grid,
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-visual {
+    order: -1;
+  }
+
+  .faq-grid {
+    gap: 50px;
+  }
+
+  .final-box {
+    padding: 55px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  body {
+    padding-bottom: 70px;
+  }
+
+  .container {
+    width: min(100% - 30px, 1180px);
+  }
+
+  .section {
+    padding: 75px 0;
+  }
+
+  .nav {
+    height: 70px;
+  }
+
+  .nav-button {
+    display: none;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 125px;
+    padding-bottom: 70px;
+  }
+
+  .hero-grid {
+    gap: 35px;
+  }
+
+  .hero h1 {
+    font-size: 43px;
+    letter-spacing: -2px;
+  }
+
+  .hero-text {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .primary-button {
+    width: 100%;
+  }
+
+  .trust-line {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-product {
+    min-height: 380px;
+  }
+
+  .product-orbit {
+    width: 320px;
+    height: 320px;
+  }
+
+  .product-badge {
+    right: 5%;
+    top: 5%;
+  }
+
+  .product-image {
+    width: 95%;
+  }
+
+  .intro-grid {
+    gap: 50px;
+  }
+
+  .image-card {
+    min-height: 360px;
+  }
+
+  .section-heading h2,
+  .intro-content h2,
+  .why-content h2,
+  .faq-heading h2,
+  .final-content h2,
+  .lifestyle-content h2 {
+    font-size: 38px;
+    letter-spacing: -1.5px;
+  }
+
+  .benefit-grid,
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .benefit-card {
+    min-height: 240px;
+  }
+
+  .why-grid {
+    gap: 40px;
+  }
+
+  .why-visual {
+    min-height: 380px;
+  }
+
+  .ring-one {
+    width: 330px;
+    height: 330px;
+  }
+
+  .ring-two {
+    width: 240px;
+    height: 240px;
+  }
+
+  .why-visual img {
+    width: 95%;
+  }
+
+  .lifestyle-box {
+    min-height: 560px;
+  }
+
+  .lifestyle-content {
+    padding: 35px 25px;
+  }
+
+  .final-box {
+    padding: 45px 25px;
+    gap: 20px;
+  }
+
+  .final-product img {
+    max-width: 330px;
+  }
+
+  .footer {
+    padding-bottom: 100px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .sticky-cta {
+    position: fixed;
+    z-index: 2000;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: block;
+    padding: 10px 15px;
+    background: rgba(7, 11, 22, 0.95);
+    backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .sticky-cta a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 800;
+  }
+}
