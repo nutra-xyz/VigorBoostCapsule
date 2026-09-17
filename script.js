@@ -81,8 +81,18 @@ faqItems.forEach((item) => {
         const otherAnswer =
           otherItem.querySelector(".faq-answer");
 
+        const otherQuestion =
+          otherItem.querySelector(".faq-question");
+
         if (otherAnswer) {
           otherAnswer.style.maxHeight = null;
+        }
+
+        if (otherQuestion) {
+          otherQuestion.setAttribute(
+            "aria-expanded",
+            "false"
+          );
         }
 
       }
@@ -90,7 +100,7 @@ faqItems.forEach((item) => {
     });
 
 
-    // Toggle current item
+    // Toggle current FAQ
 
     if (!isActive) {
 
@@ -99,11 +109,21 @@ faqItems.forEach((item) => {
       answer.style.maxHeight =
         answer.scrollHeight + "px";
 
+      question.setAttribute(
+        "aria-expanded",
+        "true"
+      );
+
     } else {
 
       item.classList.remove("active");
 
       answer.style.maxHeight = null;
+
+      question.setAttribute(
+        "aria-expanded",
+        "false"
+      );
 
     }
 
@@ -120,37 +140,51 @@ const revealElements =
   document.querySelectorAll(".reveal");
 
 
-const revealObserver =
-  new IntersectionObserver(
+if ("IntersectionObserver" in window) {
 
-    (entries, observer) => {
+  const revealObserver =
+    new IntersectionObserver(
 
-      entries.forEach((entry) => {
+      (entries, observer) => {
 
-        if (entry.isIntersecting) {
+        entries.forEach((entry) => {
 
-          entry.target.classList.add("visible");
+          if (entry.isIntersecting) {
 
-          observer.unobserve(entry.target);
+            entry.target.classList.add("visible");
 
-        }
+            observer.unobserve(entry.target);
 
-      });
+          }
 
-    },
+        });
 
-    {
-      threshold: 0.12
-    }
+      },
 
-  );
+      {
+        threshold: 0.12
+      }
+
+    );
 
 
-revealElements.forEach((element) => {
+  revealElements.forEach((element) => {
 
-  revealObserver.observe(element);
+    revealObserver.observe(element);
 
-});
+  });
+
+} else {
+
+  // Fallback for older browsers
+
+  revealElements.forEach((element) => {
+
+    element.classList.add("visible");
+
+  });
+
+}
 
 
 // =========================================
@@ -205,26 +239,152 @@ document.querySelectorAll('a[href="#"]').forEach((link) => {
 
 document.querySelectorAll(".faq-question").forEach((button) => {
 
-  button.setAttribute("aria-expanded", "false");
-
-  button.addEventListener("click", () => {
-
-    const parent =
-      button.closest(".faq-item");
-
-    if (!parent) return;
-
-    const expanded =
-      parent.classList.contains("active");
+  if (!button.hasAttribute("aria-expanded")) {
 
     button.setAttribute(
       "aria-expanded",
-      expanded ? "true" : "false"
+      "false"
     );
 
-  });
+  }
 
 });
+
+
+// =========================================
+// LIVE OFFER INDICATOR
+// =========================================
+// This is a promotional indicator, not a fabricated
+// viewer/buyer count.
+
+const liveActivity =
+  document.getElementById("liveActivity");
+
+if (liveActivity) {
+
+  liveActivity.setAttribute(
+    "aria-label",
+    "Live offer available"
+  );
+
+}
+
+
+// =========================================
+// ROTATING PROMOTIONAL NOTIFICATIONS
+// =========================================
+// 5 seconds visible
+// 8 seconds hidden
+// Then the next message appears.
+//
+// These messages describe promotional activity only;
+// they do not claim that a specific person purchased.
+
+const promoMessages = [
+
+  {
+    title: "Special Offer Available",
+    text: "Explore Vigor Boost today"
+  },
+
+  {
+    title: "Vigor Boost",
+    text: "Discover men's wellness support"
+  },
+
+  {
+    title: "Limited-Time Offer",
+    text: "Check today's available offer"
+  },
+
+  {
+    title: "Ready to Feel More Confident?",
+    text: "Learn more about Vigor Boost"
+  },
+
+  {
+    title: "Men's Wellness",
+    text: "Explore Vigor Boost"
+  }
+
+];
+
+
+const promoNotification =
+  document.getElementById("promoNotification");
+
+const promoTitle =
+  document.getElementById("promoTitle");
+
+const promoText =
+  document.getElementById("promoText");
+
+
+let promoIndex = 0;
+
+
+function showPromoNotification() {
+
+  if (
+    !promoNotification ||
+    !promoTitle ||
+    !promoText
+  ) {
+    return;
+  }
+
+
+  const current =
+    promoMessages[promoIndex];
+
+
+  promoTitle.textContent =
+    current.title;
+
+  promoText.textContent =
+    current.text;
+
+
+  // Show notification
+
+  promoNotification.classList.add("show");
+
+
+  // Visible for exactly 5 seconds
+
+  setTimeout(() => {
+
+    promoNotification.classList.remove("show");
+
+  }, 5000);
+
+
+  // Move to next message
+
+  promoIndex =
+    (promoIndex + 1) %
+    promoMessages.length;
+
+
+  // Next notification:
+  // 5 sec visible + 8 sec hidden = 13 sec
+
+  setTimeout(() => {
+
+    showPromoNotification();
+
+  }, 13000);
+
+}
+
+
+// Start first notification after 3 seconds
+
+setTimeout(() => {
+
+  showPromoNotification();
+
+}, 3000);
 
 
 // =========================================
