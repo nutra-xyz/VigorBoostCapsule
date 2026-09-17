@@ -1,0 +1,13 @@
+{
+  "name": "vigor-boost",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node build.js"
+  },
+  "devDependencies": {
+    "html-minifier-terser": "^7.2.0",
+    "terser": "^5.43.1",
+    "clean-css-cli": "^5.6.3"
+  }
+}
