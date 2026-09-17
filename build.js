@@ -1,8 +1,7 @@
 const fs = require("fs");
 const { minify: minifyHTML } = require("html-minifier-terser");
 const { minify: minifyJS } = require("terser");
-const { minify: minifyCSS } = require("clean-css");
-
+const CleanCSS = require("clean-css");
 async function build() {
   const html = fs.readFileSync("index.html", "utf8");
   const css = fs.readFileSync("style.css", "utf8");
@@ -18,7 +17,7 @@ async function build() {
     minifyJS: true
   });
 
-  const minCSS = minifyCSS(css).styles;
+  const minCSS = new CleanCSS().minify(css).styles;
 
   const minJS = await minifyJS(js, {
     compress: true,
