@@ -28,11 +28,11 @@ async function build() {
     }
   });
 
-  fs.writeFileSync("index.min.html", minHTML);
-  fs.writeFileSync("style.min.css", minCSS);
-  fs.writeFileSync("script.min.js", minJS.code);
+  fs.writeFileSync("index.html", minHTML);
+  fs.writeFileSync("style.css", minCSS);
+  fs.writeFileSync("script.js", minJS.code);
 
-  console.log("Production files created successfully.");
+  console.log("Vigor Boost production build completed.");
 }
 
 build().catch((error) => {
