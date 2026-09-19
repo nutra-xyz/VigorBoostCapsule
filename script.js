@@ -396,3 +396,235 @@ window.addEventListener("load", () => {
   document.body.classList.add("page-loaded");
 
 });
+// =========================================
+// RELATED PRODUCTS CAROUSEL
+// =========================================
+
+const relatedTrack =
+  document.querySelector(".related-products-track");
+
+const relatedPrev =
+  document.querySelector(".related-prev");
+
+const relatedNext =
+  document.querySelector(".related-next");
+
+const relatedDots =
+  document.querySelector(".related-dots");
+
+const relatedCards =
+  document.querySelectorAll(".related-product-card");
+
+
+if (
+  relatedTrack &&
+  relatedPrev &&
+  relatedNext &&
+  relatedDots &&
+  relatedCards.length
+) {
+
+  let relatedIndex = 0;
+
+
+  // Create pagination dots
+  relatedCards.forEach((card, index) => {
+
+    const dot =
+      document.createElement("span");
+
+    dot.className = "related-dot";
+
+    if (index === 0) {
+      dot.classList.add("active");
+    }
+
+    relatedDots.appendChild(dot);
+
+
+    dot.addEventListener("click", () => {
+
+      relatedCards[index].scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "start"
+      });
+
+      relatedIndex = index;
+
+      updateRelatedDots();
+
+    });
+
+  });
+
+
+  const relatedDotElements =
+    relatedDots.querySelectorAll(".related-dot");
+
+
+  function updateRelatedDots() {
+
+    relatedDotElements.forEach(
+      (dot, index) => {
+
+        dot.classList.toggle(
+          "active",
+          index === relatedIndex
+        );
+
+      }
+    );
+
+  }
+
+
+  function getRelatedScrollAmount() {
+
+    const firstCard =
+      relatedCards[0];
+
+    if (!firstCard) return 0;
+
+    const cardWidth =
+      firstCard.getBoundingClientRect().width;
+
+    const trackStyle =
+      window.getComputedStyle(relatedTrack);
+
+    const gap =
+      parseFloat(trackStyle.columnGap) || 0;
+
+    return cardWidth + gap;
+
+  }
+
+
+  // Previous button
+  relatedPrev.addEventListener(
+    "click",
+    () => {
+
+      relatedIndex--;
+
+      if (relatedIndex < 0) {
+        relatedIndex =
+          relatedCards.length - 1;
+      }
+
+      relatedTrack.scrollTo({
+        left:
+          relatedIndex *
+          getRelatedScrollAmount(),
+        behavior: "smooth"
+      });
+
+      updateRelatedDots();
+
+    }
+  );
+
+
+  // Next button
+  relatedNext.addEventListener(
+    "click",
+    () => {
+
+      relatedIndex++;
+
+      if (
+        relatedIndex >=
+        relatedCards.length
+      ) {
+        relatedIndex = 0;
+      }
+
+      relatedTrack.scrollTo({
+        left:
+          relatedIndex *
+          getRelatedScrollAmount(),
+        behavior: "smooth"
+      });
+
+      updateRelatedDots();
+
+    }
+  );
+
+
+  // Update active dot while manually scrolling
+  relatedTrack.addEventListener(
+    "scroll",
+    () => {
+
+      const scrollAmount =
+        getRelatedScrollAmount();
+
+      if (!scrollAmount) return;
+
+      const newIndex =
+        Math.round(
+          relatedTrack.scrollLeft /
+          scrollAmount
+        );
+
+      if (
+        newIndex !==
+        relatedIndex
+      ) {
+
+        relatedIndex =
+          Math.max(
+            0,
+            Math.min(
+              newIndex,
+              relatedCards.length - 1
+            )
+          );
+
+        updateRelatedDots();
+
+      }
+
+    },
+    { passive: true }
+  );
+
+
+  // Keyboard accessibility
+  relatedPrev.addEventListener(
+    "keydown",
+    (event) => {
+
+      if (
+        event.key === "Enter" ||
+        event.key === " "
+      ) {
+
+        event.preventDefault();
+        relatedPrev.click();
+
+      }
+
+    }
+  );
+
+
+  relatedNext.addEventListener(
+    "keydown",
+    (event) => {
+
+      if (
+        event.key === "Enter" ||
+        event.key === " "
+      ) {
+
+        event.preventDefault();
+        relatedNext.click();
+
+      }
+
+    }
+  );
+
+}
